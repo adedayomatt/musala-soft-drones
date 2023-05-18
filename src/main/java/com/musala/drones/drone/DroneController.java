@@ -28,8 +28,13 @@ public class DroneController {
     }
 
     @GetMapping(path = "/{id}")
-    public Optional<Drone> getDrone(@PathVariable("id") Long id) {
+    public Drone getDrone(@PathVariable("id") Long id) {
         return droneService.getDrone(id);
+    }
+
+    @PostMapping(path = "/{id}/load")
+    public List<Medication> loadDrone(@PathVariable("id") Long id, @RequestBody List<Medication> medications) {
+        return droneService.loadDrone(id, medications);
     }
 
 }
