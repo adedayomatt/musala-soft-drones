@@ -36,6 +36,10 @@ public class DroneService {
         return droneRepository.findAll();
     }
 
+    public List<Drone> getAvailableDrones() {
+        return droneRepository.findDronesByState(State.IDLE.name());
+    }
+
     public Drone getDrone(Long id) {
         return droneRepository.findById(id)
                 .orElseThrow(() -> new IllegalStateException("Drone with id "+id+" does not exist"));
