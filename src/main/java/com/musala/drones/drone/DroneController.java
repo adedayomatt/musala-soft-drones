@@ -37,4 +37,9 @@ public class DroneController {
         return droneService.loadDrone(id, medications);
     }
 
+    @GetMapping(path = "/available")
+    public List<Drone> getAvailableDrones() {
+        return droneService.getAvailableDrones();
+    }
+
 }
