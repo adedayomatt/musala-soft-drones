@@ -1,6 +1,13 @@
 package com.musala.drones.drone;
 
+import com.musala.drones.converters.JpaDroneMedicationsConverter;
+import com.musala.drones.enums.Model;
+import com.musala.drones.enums.State;
 import jakarta.persistence.*;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table
@@ -16,13 +23,17 @@ public class Drone {
             generator = "drone_sequence"
     )
     private Long id;
-    private Float weightLimit;
+    private Double weightLimit;
     private String serialNumber;
     private Integer batteryCapacity;
     @Column(columnDefinition = "enum('IDLE', 'LOADING', 'LOADED', 'DELIVERING', 'DELIVERED', 'RETURNING') default 'IDLE'")
     private String state;
     @Column(columnDefinition = "enum('Lightweight', 'Middleweight', 'Cruiserweight', 'Heavyweight') default 'Lightweight'")
     private String model;
+
+    @Column(columnDefinition = "json")
+    @Convert(converter = JpaDroneMedicationsConverter.class)
+    private List<Medication> medications;
 
     public Long getId() {
         return id;
@@ -32,11 +43,11 @@ public class Drone {
         this.id = id;
     }
 
-    public Float getWeightLimit() {
+    public Double getWeightLimit() {
         return weightLimit;
     }
 
-    public void setWeightLimit(Float weightLimit) {
+    public void setWeightLimit(Double weightLimit) {
         this.weightLimit = weightLimit;
     }
 
@@ -60,15 +71,31 @@ public class Drone {
         return state;
     }
 
-    public void setState(String state) {
-        this.state = state;
+    public void setState(State state) {
+        this.state = state.name();
     }
 
     public String getModel() {
         return model;
     }
 
-    public void setModel(String model) {
-        this.model = model;
+    public void setModel(Model model) {
+        this.model = model.name();
+    }
+
+    public List<Medication> getMedications() {
+        return medications == null ? new ArrayList<>() : medications;
+    }
+
+    public void setMedications(List<Medication> medications) {
+        this.medications = medications;
+    }
+
+    public Boolean canTakeWeight(Double weight) {
+        return getWeightLimit() >= weight;
+    }
+
+    public Boolean isIdle() {
+        return Objects.equals(getState(), State.IDLE.name());
     }
 }
