@@ -1,0 +1,26 @@
+version: "2"
+services:
+  mysql-service:
+    image: mysql:8
+    container_name: mysql-service
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+    volumes:
+      - ./data/mysql:/var/lib/mysql
+      - ./docker/mysql:/docker-entrypoint-initdb.d
+    ports:
+      - "3308:3306"
+    networks:
+      - musala-network
+  drone-service:
+    image: musala-drones
+    build: .
+    container_name: drone-service
+    ports:
+      - "8080:8080"
+    networks:
+      - musala-network
+    depends_on:
+      - mysql-service
+networks:
+  musala-network:
