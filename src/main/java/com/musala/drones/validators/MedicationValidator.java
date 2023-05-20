@@ -4,7 +4,7 @@ import com.musala.drones.drone.Medication;
 import org.springframework.stereotype.Service;
 
 @Service
-public class MedicationValidator {
+public class MedicationValidator implements ValidatorInterface {
     private Medication medication;
 
     public Medication getMedication() {
@@ -24,6 +24,7 @@ public class MedicationValidator {
         return medication.getCode().matches("^[A-Z_0-9]+$");
     }
 
+    @Override
     public Boolean isValid() {
         return nameValid() && codeValid();
     }
