@@ -6,7 +6,7 @@ import com.musala.drones.enums.State;
 import org.springframework.stereotype.Service;
 
 @Service
-public class DroneValidator {
+public class DroneValidator implements ValidatorInterface {
     private Drone drone;
 
     public Drone getDrone() {
@@ -45,6 +45,7 @@ public class DroneValidator {
         return drone.getWeightLimit() <= 500;
     }
 
+    @Override
     public Boolean isValid() {
         return serialNumberValid() && modelValid() && stateValid() && weightLimitValid();
     }
