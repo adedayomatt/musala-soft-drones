@@ -12,10 +12,10 @@ services:
       - "3308:3306"
     networks:
       - musala-network
-  drone-service:
-    image: musala-drones
-    build: .
-    container_name: drone-service
+  java-drone-service:
+    image: java-drone-image
+    build: java/.
+    container_name: java-drone-service
     ports:
       - "8080:8080"
     networks:
