@@ -1,0 +1,17 @@
+{
+  "name": "musala-drone",
+  "version": "1.0.0",
+  "description": "Musala task",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Adedayo Matthew",
+  "license": "ISC",
+  "devDependencies": {
+    "sequelize-cli": "^6.6.0"
+  },
+  "dependencies": {
+    "sequelize": "^6.31.1"
+  }
+}
