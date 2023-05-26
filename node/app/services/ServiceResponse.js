@@ -1,4 +1,5 @@
 const status = require('app/constants/status');
+const { RequestLog } = require("app/models");
 
 class ServiceResponse {
 
@@ -27,6 +28,7 @@ class ServiceResponse {
             message: message,
             data: data
         }
+        this.updateLog(response);
         return this.response.status(status_code).json(response);
     }
 
@@ -48,7 +50,22 @@ class ServiceResponse {
             code: e.code,
             error: e
         }
+        this.updateLog(response);
         return this.response.status(statusCode).json(response);
+    }
+
+    /**
+     * Update initialRequest log
+     *
+     * @param response
+     */
+    updateLog(response) {
+        if(this.request.log) {
+            RequestLog.update({
+                response: JSON.stringify(response)
+            }, { where: { id: this.request.log.id }
+            })
+        }
     }
 }
 
