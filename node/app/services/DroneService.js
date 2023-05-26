@@ -30,7 +30,7 @@ class DroneService {
     }
 
     /**
-     * Get a drone by state
+     * Get a drone by id
      *
      * @param {int} id
      * @param {string[]} include
