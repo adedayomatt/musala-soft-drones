@@ -3,6 +3,7 @@ const { RequestLog } = require('app/models');
 const ServiceResponse = require("app/services/ServiceResponse");
 const DroneService = require("app/services/DroneService");
 const states = require("app/constants/states");
+const { DroneNotIdleException, DroneWeightLimitExceededException } = require("app/exceptions")
 
 module.exports = {
     /**
@@ -58,8 +59,23 @@ module.exports = {
         if(req.drone && req.drone.state === states.IDLE) {
             next()
         } else {
-            return (new ServiceResponse(req, res)).error(new Error("Drone is engaged at the moment"))
+            return (new ServiceResponse(req, res)).error(new DroneNotIdleException(req.drone))
         }
+    },
+
+    /**
+     * Check weight of medications to ensure it does not exceed drone weight limit
+     *
+     * @param req
+     * @param res
+     * @param next
+     * @returns {*}
+     */
+    checkMedicationWeight: (req, res, next) => {
+        const medications = req.body || [];
+        const totalWeight = medications.map(m => m.weight).reduce((a,b) => a+b, 0);
+        if(totalWeight > req.drone.weightLimit) return (new ServiceResponse(req, res)).error(new DroneWeightLimitExceededException(req.drone))
+        next();
     },
 
     /**
