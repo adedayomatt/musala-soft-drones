@@ -1,10 +1,10 @@
 const states = {
-    IDLE: "idle",
-    LOADING: "loading",
-    LOADED: "loaded",
-    DELIVERING: "delivering",
-    DELIVERED: "delivered",
-    RETURNING: "returning",
+    IDLE: "IDLE",
+    LOADING: "LOADING",
+    LOADED: "LOADED",
+    DELIVERING: "DELIVERING",
+    DELIVERED: "DELIVERED",
+    RETURNING: "RETURNING",
 
     allStates: () => [states.IDLE, states.LOADING, states.LOADED, states.DELIVERING, states.DELIVERED, states.RETURNING]
 };
