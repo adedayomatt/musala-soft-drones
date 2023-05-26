@@ -14,22 +14,22 @@ class DroneService {
     }
 
     /**
-     * Get all drones
-     * @param {string[]} include
-     * @returns {Promise<Model[]>}
-     */
+     * Get drones
+     *
+     * @param filter
+     * @param include
+     * @returns {Promise<Model[]>}     */
 
-    static async getAllDrones(include = []) {
+    static async getDrones(filter = {}, include = []) {
         return await Drone.findAll({
-            order: [
-                ['createdAt', 'DESC']
-            ], include
+            where: filter,
+            order: [ ['createdAt', 'DESC'] ],
+            include
         });
     }
 
-
     /**
-     * Get a drone by id
+     * Get a drone by state
      *
      * @param {int} id
      * @param {string[]} include
