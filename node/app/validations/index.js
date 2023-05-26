@@ -17,4 +17,13 @@ module.exports = {
             batteryCapacity: Joi.number().integer().max(100).required()
         })
     },
+
+    droneLoad: {
+        body: Joi.array().items(Joi.object({
+            name: Joi.string().regex(/^[a-zA-Z_0-9-]+$/).required(),
+            weight: Joi.number().required(),
+            code: Joi.string().regex(/^[A-Z_0-9]+$/).required(),
+            image: Joi.string().required()
+        })).min(1).required()
+    }
 };
