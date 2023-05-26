@@ -54,6 +54,10 @@ module.exports = {
             })
     },
 
+    getDroneBatteryLevel: (req, res) => {
+        (new Response(req, res)).success(req.drone.batteryCapacity)
+    },
+
     loadDroneWithMedications: (req, res) => {
         DroneService.loadDroneWithMedications(req.drone, req.body)
             .then(response => {

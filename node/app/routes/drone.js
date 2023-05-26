@@ -15,5 +15,6 @@ router.post("/:id/load", [
     droneExist, droneIsIdle, checkDroneBatteryLevel, validate(validations.droneLoad), checkMedicationWeight
 ], droneController.loadDroneWithMedications);
 router.get("/:id/medications", [droneExist], droneController.getDroneLoadedMedications);
+router.get("/:id/battery", [droneExist], droneController.getDroneBatteryLevel);
 
 module.exports = router;
