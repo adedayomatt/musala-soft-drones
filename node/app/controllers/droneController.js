@@ -44,6 +44,16 @@ module.exports = {
             })
     },
 
+    getDroneLoadedMedications: (req, res) => {
+        DroneService.getDroneLoadedMedications(req.drone.id)
+            .then(response => {
+                (new Response(req, res)).success(response)
+            })
+            .catch(e => {
+                (new Response(req, res)).error(e)
+            })
+    },
+
     loadDroneWithMedications: (req, res) => {
         DroneService.loadDroneWithMedications(req.drone, req.body)
             .then(response => {
