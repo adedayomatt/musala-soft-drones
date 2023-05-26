@@ -43,6 +43,19 @@ class DroneService {
         return drone;
     }
 
+    /**
+     * Get medications that are loaded to a drone
+     *
+     * @param id
+     * @returns {Promise<Model[]>}
+     **/
+
+    static async getDroneLoadedMedications(id) {
+        return await Medication.findAll({
+            where: { droneId: id, state: states.LOADED }
+        })
+    }
+
 
     /**
      * Load a drone with medications
