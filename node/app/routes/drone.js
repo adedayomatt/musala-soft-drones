@@ -12,5 +12,6 @@ router.get("/:id", [], droneController.getDrone);
 router.post("/:id/load", [
     droneExist, droneIsIdle, validate(validations.droneLoad), checkMedicationWeight
 ], droneController.loadDroneWithMedications);
+router.get("/:id/medications", [droneExist], droneController.getDroneLoadedMedications);
 
 module.exports = router;
