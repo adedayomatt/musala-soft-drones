@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const config = require('app/config/config');
+const droneRoutes = require("app/routes/drone")
 const { requestLogger, handleError } = require("app/middlewares")
 const ServiceResponse = require("app/services/ServiceResponse");
 
@@ -12,6 +13,8 @@ app.use(express.urlencoded({
 
 app.use(cors());
 app.use(requestLogger)
+
+app.use("/api/v1/drones", droneRoutes )
 
 app.use("/", (req, res) => {
     (new ServiceResponse(req, res)).error({
