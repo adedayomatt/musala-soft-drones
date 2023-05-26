@@ -1,3 +1,4 @@
+const { ValidationError } = require('express-validation');
 const { RequestLog } = require('app/models');
 const ServiceResponse = require("app/services/ServiceResponse");
 
@@ -35,6 +36,9 @@ module.exports = {
      * @returns {*}
      */
     handleError: (err, req, res, next) => {
+        if (err instanceof ValidationError) {
+            return (new ServiceResponse(req, res)).error(err);
+        }
         return (new ServiceResponse(req, res)).error({
             status_code: 500,
             message: "Internal server error",
