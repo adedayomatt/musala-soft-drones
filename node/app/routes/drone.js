@@ -6,6 +6,7 @@ const droneController = require("app/controllers/droneController")
 
 router.post("/", [validate(validations.droneRegistration)], droneController.registerDrone);
 router.get("/", [], droneController.getDrones);
+router.get("/available", [], droneController.getIdleDrones);
 router.get("/:id", [], droneController.getDrone);
 
 module.exports = router;

@@ -1,5 +1,6 @@
 const Response = require("app/services/ServiceResponse")
 const DroneService = require("app/services/DroneService");
+const states = require("app/constants/states");
 
 module.exports = {
 
@@ -14,7 +15,17 @@ module.exports = {
     },
 
     getDrones: (req, res) => {
-        DroneService.getAllDrones()
+        DroneService.getDrones()
+            .then(response => {
+                (new Response(req, res)).success(response)
+            })
+            .catch(e => {
+                (new Response(req, res)).error(e)
+            })
+    },
+
+    getIdleDrones: (req, res) => {
+        DroneService.getDrones({ state: states.IDLE })
             .then(response => {
                 (new Response(req, res)).success(response)
             })
