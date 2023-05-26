@@ -22,5 +22,26 @@ services:
       - musala-network
     depends_on:
       - mysql-service
+  node-drone-service:
+    image: node-drone-image
+    build: node/.
+    container_name: node-drone-service
+    networks:
+      - musala-network
+    ports:
+      - "8000:80"
+    environment:
+      - NODE_PATH=.
+      - PORT=80
+      - NODE_ENV=development
+      - DB_USERNAME=root
+      - DB_PASSWORD=root
+      - DB_NAME=node-drones
+      - DB_HOST=mysql-service
+    volumes:
+      - ./node:/home/node
+      - ./node/bin/log:/var/log/application/node_drones
+    depends_on:
+      - mysql-service
 networks:
   musala-network:
