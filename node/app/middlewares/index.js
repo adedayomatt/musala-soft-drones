@@ -4,6 +4,7 @@ const ServiceResponse = require("app/services/ServiceResponse");
 const DroneService = require("app/services/DroneService");
 const states = require("app/constants/states");
 const { DroneNotIdleException, DroneWeightLimitExceededException } = require("app/exceptions")
+const {DroneBatteryCapacityLowException} = require("../exceptions");
 
 module.exports = {
     /**
@@ -75,6 +76,19 @@ module.exports = {
         const medications = req.body || [];
         const totalWeight = medications.map(m => m.weight).reduce((a,b) => a+b, 0);
         if(totalWeight > req.drone.weightLimit) return (new ServiceResponse(req, res)).error(new DroneWeightLimitExceededException(req.drone))
+        next();
+    },
+
+    /**
+     * Check the battery level can load medications
+     *
+     * @param req
+     * @param res
+     * @param next
+     * @returns {*}
+     */
+    checkDroneBatteryLevel: (req, res, next) => {
+        if(req.drone.batteryCapacity <= 25 ) return (new ServiceResponse(req, res)).error(new DroneBatteryCapacityLowException(req.drone))
         next();
     },
 
