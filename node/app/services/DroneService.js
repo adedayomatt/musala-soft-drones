@@ -1,5 +1,6 @@
-const { Drone } = require("app/models");
-const { DroneNotFoundException } = require("app/exceptions")
+const { Drone, Medication } = require("app/models");
+const { DroneNotFoundException } = require("app/exceptions");
+const states = require("app/constants/states");
 
 class DroneService {
 
@@ -42,6 +43,26 @@ class DroneService {
         return drone;
     }
 
+
+    /**
+     * Load a drone with medications
+     *
+     * @param {<Model<any, TModelAttributes>} drone
+     * @param {{}[]} medications
+     * @returns {Promise<*|void>}
+     */
+    static async loadDroneWithMedications(drone, medications = []) {
+        try {
+            await drone.update({ state: states.LOADING })
+            await Promise.all(medications.map(medication => Medication.create({
+                droneId: drone.id,
+                ...medication
+            })).concat([drone.update({ state: states.LOADED })]))
+            return await drone.reload({ include: ['medications'] })
+        } catch (e) {
+            throw e
+        }
+    }
 }
 
 module.exports = DroneService
