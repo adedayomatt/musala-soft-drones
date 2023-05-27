@@ -1,6 +1,6 @@
 'use strict';
-const { allModels } = require("app/constants/models");
-const { IDLE, allStates } = require("app/constants/states");
+const models = require("app/constants/models");
+const states = require("app/constants/states");
 const {
   Model
 } = require('sequelize');
@@ -28,14 +28,14 @@ module.exports = (sequelize, DataTypes) => {
     serialNumber: DataTypes.STRING,
     model: {
       type: DataTypes.ENUM,
-      values: allModels(),
+      values: Object.values(models),
     },
     weightLimit: DataTypes.FLOAT,
     batteryCapacity: DataTypes.INTEGER,
     state: {
       type: DataTypes.ENUM,
-      values: allStates(),
-      defaultValue: IDLE
+      values: Object.values(states),
+      defaultValue: states.IDLE
     },
   }, {
     sequelize,
