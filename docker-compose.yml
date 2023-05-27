@@ -43,5 +43,23 @@ services:
       - ./node/bin/log:/var/log/application/node_drones
     depends_on:
       - mysql-service
+  node-drone-cron-service:
+    image: node-drone-image
+    container_name: node-drone-cron-service
+    volumes:
+      - ./node:/home/node
+    environment:
+      - NODE_PATH=.
+      - PORT=80
+      - NODE_ENV=development
+      - DB_USERNAME=root
+      - DB_PASSWORD=root
+      - DB_NAME=node-drones
+      - DB_HOST=mysql-service
+    command: node tasks
+    networks:
+      - musala-network
+    depends_on:
+      - node-drone-service
 networks:
   musala-network:
