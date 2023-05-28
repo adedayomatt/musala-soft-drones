@@ -2,3 +2,5 @@
 .vscode
 .DS_Store
 /data
+/node/.env
+/node/node_modules
