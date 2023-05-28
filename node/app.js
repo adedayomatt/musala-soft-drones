@@ -14,8 +14,10 @@ app.use(express.urlencoded({
 app.use(cors());
 app.use(requestLogger)
 
+app.get("/ping", (req, res) => {
+    (new ServiceResponse(req, res)).success({ message: "Service is up!" })
+})
 app.use("/api/v1/drones", droneRoutes )
-
 app.use("/", (req, res) => {
     (new ServiceResponse(req, res)).error({
         status_code: 404,
