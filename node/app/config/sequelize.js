@@ -12,13 +12,15 @@ module.exports = {
     password: database.password,
     database: database.database,
     host: database.host,
-    dialect: "mysql"
+    dialect: "mysql",
+    logging: false
   },
   production: {
     username: database.username,
     password: database.password,
     database: database.database,
     host: database.host,
-    dialect: "mysql"
+    dialect: "mysql",
+    logging: false
   }
 }
