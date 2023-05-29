@@ -87,19 +87,19 @@ This submission is primarily in NodeJS**
 ### Requirement
 - **Docker**: All applications are ran as docker containers, ensure docker engine is running on the system.
 
-#### Serivces
+#### Services
 The following services are registered in the `docker-compose.yml`:
 - `mysql-service`: Database service using `mysql:8` image.
 - `java-drone-service`: Implementation in Java using the image `java-drone-image` built by the Dockerfile at  _`java/Dockerfile`_
 - `node-drone-service`: Implementation in Node using the image `node-drone-image` built by the Dockerfile at _`node/Dockerfile`_
 - `node-drone-cron-service`: A cron service to run periodic tasks. It also uses the image `node-drone-image`
 
-All services can be built and started by running:
+All other services depends on the `mysql-service`, so ensure the service is started and running first by running:
 ```
-docker-compose up --build
+docker-compose up mysql-service
 ```
 
-### Implemenations
+### Implementations
 The Java version was uncompleted before switching to Node, the Java version has the following implementations:
 - Registering of drones
 - Getting all drones
