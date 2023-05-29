@@ -1,0 +1,1338 @@
+{
+	"info": {
+		"_postman_id": "6b7cf646-7b9a-4639-9e0e-b9c0cbd42662",
+		"name": "Musala Drones REST API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "8480602"
+	},
+	"item": [
+		{
+			"name": "Java",
+			"item": [
+				{
+					"name": "Get Drone",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{javaBaseUrl}}/api/v1/drones/1",
+							"host": [
+								"{{javaBaseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"drones",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 - Get Drone",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{javaBaseUrl}}/api/v1/drones/1",
+									"host": [
+										"{{javaBaseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"drones",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 29 May 2023 17:20:44 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"weightLimit\": 400,\n    \"serialNumber\": \"aabbccdd\",\n    \"batteryCapacity\": 80,\n    \"state\": \"LOADED\",\n    \"model\": \"Lightweight\",\n    \"medications\": [\n        {\n            \"name\": \"Vaccine-A\",\n            \"weight\": 20,\n            \"code\": \"AAA\",\n            \"image\": \"https://picsum.photos/200/300\"\n        },\n        {\n            \"name\": \"Vaccine-B\",\n            \"weight\": 30,\n            \"code\": \"BBB\",\n            \"image\": \"https://picsum.photos/200/300\"\n        }\n    ],\n    \"idle\": false\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Drones",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{javaBaseUrl}}/api/v1/drones",
+							"host": [
+								"{{javaBaseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"drones"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Drones",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{javaBaseUrl}}/api/v1/drones",
+									"host": [
+										"{{javaBaseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"drones"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 29 May 2023 17:20:52 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"weightLimit\": 400,\n        \"serialNumber\": \"aabbccdd\",\n        \"batteryCapacity\": 80,\n        \"state\": \"LOADED\",\n        \"model\": \"Lightweight\",\n        \"medications\": [\n            {\n                \"name\": \"Vaccine-A\",\n                \"weight\": 20,\n                \"code\": \"AAA\",\n                \"image\": \"https://picsum.photos/200/300\"\n            },\n            {\n                \"name\": \"Vaccine-B\",\n                \"weight\": 30,\n                \"code\": \"BBB\",\n                \"image\": \"https://picsum.photos/200/300\"\n            }\n        ],\n        \"idle\": false\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "200 - Get Available Drones",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{javaBaseUrl}}/api/v1/drones/available",
+							"host": [
+								"{{javaBaseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"drones",
+								"available"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Load Drone",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n    {\n        \"name\": \"Vaccine-A\",\n        \"weight\": 20,\n        \"code\": \"AAA\",\n        \"image\": \"https://picsum.photos/200/300\"\n    },\n    {\n        \"name\": \"Vaccine-B\",\n        \"weight\": 30,\n        \"code\": \"BBB\",\n        \"image\": \"https://picsum.photos/200/300\"\n    }\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{javaBaseUrl}}/api/v1/drones/1/load",
+							"host": [
+								"{{javaBaseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"drones",
+								"1",
+								"load"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 - Load Drone",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "[\n    {\n        \"name\": \"Vaccine-A\",\n        \"weight\": 20,\n        \"code\": \"AAA\",\n        \"image\": \"https://picsum.photos/200/300\"\n    },\n    {\n        \"name\": \"Vaccine-B\",\n        \"weight\": 30,\n        \"code\": \"BBB\",\n        \"image\": \"https://picsum.photos/200/300\"\n    }\n]",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{javaBaseUrl}}/api/v1/drones/1/load",
+									"host": [
+										"{{javaBaseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"drones",
+										"1",
+										"load"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 29 May 2023 17:19:56 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"name\": \"Vaccine-A\",\n        \"weight\": 20,\n        \"code\": \"AAA\",\n        \"image\": \"https://picsum.photos/200/300\"\n    },\n    {\n        \"name\": \"Vaccine-B\",\n        \"weight\": 30,\n        \"code\": \"BBB\",\n        \"image\": \"https://picsum.photos/200/300\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Register Drone",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"state\": \"IDLE\",\n    \"model\": \"Lightweight\",\n    \"weightLimit\": 400,\n    \"serialNumber\": \"aabbccdd\",\n    \"batteryCapacity\": 80\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{javaBaseUrl}}/api/v1/drones",
+							"host": [
+								"{{javaBaseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"drones"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 - Register Drone",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"state\": \"IDLE\",\n    \"model\": \"Lightweight\",\n    \"weightLimit\": 400,\n    \"serialNumber\": \"aabbccdd\",\n    \"batteryCapacity\": 80\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{javaBaseUrl}}/api/v1/drones",
+									"host": [
+										"{{javaBaseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"drones"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 29 May 2023 17:19:44 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"weightLimit\": 400,\n    \"serialNumber\": \"aabbccdd\",\n    \"batteryCapacity\": 80,\n    \"state\": \"IDLE\",\n    \"model\": \"Lightweight\",\n    \"medications\": [],\n    \"idle\": true\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Node",
+			"item": [
+				{
+					"name": "Ping",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{nodeBaseUrl}}/ping",
+							"host": [
+								"{{nodeBaseUrl}}"
+							],
+							"path": [
+								"ping"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 - Ping",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{nodeBaseUrl}}/ping",
+									"host": [
+										"{{nodeBaseUrl}}"
+									],
+									"path": [
+										"ping"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE, OPTIONS"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Content-Type, Accept"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "87"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"57-4Iv+gvJNDg5oHKaMGsoCZTxYtqs\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 29 May 2023 17:21:13 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"Request Successful\",\n    \"data\": {\n        \"message\": \"Service is up!\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Drone",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{nodeBaseUrl}}/api/v1/drones/1",
+							"host": [
+								"{{nodeBaseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"drones",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 - Get Drone",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{nodeBaseUrl}}/api/v1/drones/1",
+									"host": [
+										"{{nodeBaseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"drones",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE, OPTIONS"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Content-Type, Accept"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "246"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"f6-usxZY5oMHXOZXZV7hQG+snEJWTs\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 29 May 2023 17:21:52 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"Request Successful\",\n    \"data\": {\n        \"id\": 1,\n        \"serialNumber\": \"abcdef\",\n        \"model\": \"Heavyweight\",\n        \"weightLimit\": 500,\n        \"batteryCapacity\": 100,\n        \"state\": \"IDLE\",\n        \"createdAt\": \"2023-05-29T17:21:24.000Z\",\n        \"updatedAt\": \"2023-05-29T17:21:24.000Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Drones",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{nodeBaseUrl}}/api/v1/drones",
+							"host": [
+								"{{nodeBaseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"drones"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 - Get Drones",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{nodeBaseUrl}}/api/v1/drones",
+									"host": [
+										"{{nodeBaseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"drones"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE, OPTIONS"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Content-Type, Accept"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "249"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"f9-38DaG7RvcSyb076s77TNe8U6xg0\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 29 May 2023 17:25:49 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"Request Successful\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"serialNumber\": \"abcdef\",\n            \"model\": \"Heavyweight\",\n            \"weightLimit\": 500,\n            \"batteryCapacity\": 94,\n            \"state\": \"LOADED\",\n            \"createdAt\": \"2023-05-29T17:21:24.000Z\",\n            \"updatedAt\": \"2023-05-29T17:25:00.000Z\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Available Drones",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{nodeBaseUrl}}/api/v1/drones/available",
+							"host": [
+								"{{nodeBaseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"drones",
+								"available"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 - Get Available Drones",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{nodeBaseUrl}}/api/v1/drones/available",
+									"host": [
+										"{{nodeBaseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"drones",
+										"available"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE, OPTIONS"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Content-Type, Accept"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "248"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"f8-msUzOwlq/qxFe4SqH4oVq/hk5Wo\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 29 May 2023 17:21:44 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"Request Successful\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"serialNumber\": \"abcdef\",\n            \"model\": \"Heavyweight\",\n            \"weightLimit\": 500,\n            \"batteryCapacity\": 100,\n            \"state\": \"IDLE\",\n            \"createdAt\": \"2023-05-29T17:21:24.000Z\",\n            \"updatedAt\": \"2023-05-29T17:21:24.000Z\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Drone Loaded Medications",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{nodeBaseUrl}}/api/v1/drones/1/medications",
+							"host": [
+								"{{nodeBaseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"drones",
+								"1",
+								"medications"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 - Get Drone Loaded Medications",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{nodeBaseUrl}}/api/v1/drones/1/medications",
+									"host": [
+										"{{nodeBaseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"drones",
+										"1",
+										"medications"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE, OPTIONS"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Content-Type, Accept"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "458"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1ca-S4A+/6iUV6hMjavCLSGOdjTXxLE\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 29 May 2023 17:22:25 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"Request Successful\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"droneId\": 1,\n            \"name\": \"Paracetamol\",\n            \"weight\": 100,\n            \"code\": \"AAAAA\",\n            \"image\": \"https://picsum.photos/200\",\n            \"state\": \"LOADED\",\n            \"createdAt\": \"2023-05-29T17:22:13.000Z\",\n            \"updatedAt\": \"2023-05-29T17:22:13.000Z\"\n        },\n        {\n            \"id\": 2,\n            \"droneId\": 1,\n            \"name\": \"Procold\",\n            \"weight\": 200,\n            \"code\": \"BBBBB\",\n            \"image\": \"https://picsum.photos/300\",\n            \"state\": \"LOADED\",\n            \"createdAt\": \"2023-05-29T17:22:13.000Z\",\n            \"updatedAt\": \"2023-05-29T17:22:13.000Z\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Drone Battery Level",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{nodeBaseUrl}}/api/v1/drones/1/battery",
+							"host": [
+								"{{nodeBaseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"drones",
+								"1",
+								"battery"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 - Get Drone Battery Level",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{nodeBaseUrl}}/api/v1/drones/1/battery",
+									"host": [
+										"{{nodeBaseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"drones",
+										"1",
+										"battery"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE, OPTIONS"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Content-Type, Accept"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "62"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3e-wT7kXAg3Py96dp8na45vRt359WU\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 29 May 2023 17:21:33 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"Request Successful\",\n    \"data\": 100\n}"
+						}
+					]
+				},
+				{
+					"name": "Load Drone",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n    {\n        \"name\": \"Paracetamol\",\n        \"weight\": 100,\n        \"code\": \"AAAAA\",\n        \"image\": \"https://picsum.photos/200\"\n    },\n    {\n        \"name\": \"Procold\",\n        \"weight\": 200,\n        \"code\": \"BBBBB\",\n        \"image\": \"https://picsum.photos/300\"\n    }\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{nodeBaseUrl}}/api/v1/drones/1/load",
+							"host": [
+								"{{nodeBaseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"drones",
+								"1",
+								"load"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 - Load Drone",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "[\n    {\n        \"name\": \"Paracetamol\",\n        \"weight\": 100,\n        \"code\": \"AAAAA\",\n        \"image\": \"https://picsum.photos/200\"\n    },\n    {\n        \"name\": \"Procold\",\n        \"weight\": 200,\n        \"code\": \"BBBBB\",\n        \"image\": \"https://picsum.photos/300\"\n    }\n]",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{nodeBaseUrl}}/api/v1/drones/1/load",
+									"host": [
+										"{{nodeBaseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"drones",
+										"1",
+										"load"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE, OPTIONS"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Content-Type, Accept"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "662"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"296-q8dn7y9t//3UF+qetrIAJ94U5To\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 29 May 2023 17:22:13 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"Request Successful\",\n    \"data\": {\n        \"id\": 1,\n        \"serialNumber\": \"abcdef\",\n        \"model\": \"Heavyweight\",\n        \"weightLimit\": 500,\n        \"batteryCapacity\": 100,\n        \"state\": \"LOADED\",\n        \"createdAt\": \"2023-05-29T17:21:24.000Z\",\n        \"updatedAt\": \"2023-05-29T17:22:13.000Z\",\n        \"medications\": [\n            {\n                \"id\": 1,\n                \"droneId\": 1,\n                \"name\": \"Paracetamol\",\n                \"weight\": 100,\n                \"code\": \"AAAAA\",\n                \"image\": \"https://picsum.photos/200\",\n                \"state\": \"LOADED\",\n                \"createdAt\": \"2023-05-29T17:22:13.000Z\",\n                \"updatedAt\": \"2023-05-29T17:22:13.000Z\"\n            },\n            {\n                \"id\": 2,\n                \"droneId\": 1,\n                \"name\": \"Procold\",\n                \"weight\": 200,\n                \"code\": \"BBBBB\",\n                \"image\": \"https://picsum.photos/300\",\n                \"state\": \"LOADED\",\n                \"createdAt\": \"2023-05-29T17:22:13.000Z\",\n                \"updatedAt\": \"2023-05-29T17:22:13.000Z\"\n            }\n        ]\n    }\n}"
+						},
+						{
+							"name": "400 - Drone Already Engaged",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "[\n    {\n        \"name\": \"Paracetamol\",\n        \"weight\": 100,\n        \"code\": \"AAAAA\",\n        \"image\": \"https://picsum.photos/200\"\n    },\n    {\n        \"name\": \"Procold\",\n        \"weight\": 500,\n        \"code\": \"BBBBB\",\n        \"image\": \"https://picsum.photos/300\"\n    }\n]",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{nodeBaseUrl}}/api/v1/drones/1/load",
+									"host": [
+										"{{nodeBaseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"drones",
+										"1",
+										"load"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE, OPTIONS"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Content-Type, Accept"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "94"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"5e-N1gtNk2wM7OhPca9JMzoIF0aGmc\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 29 May 2023 17:22:51 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"error\",\n    \"message\": \"Drone is currently engaged...loaded\",\n    \"error\": {\n        \"status_code\": 400\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Register Drone",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"model\": \"Heavyweight\",\n    \"weightLimit\": 500,\n    \"serialNumber\": \"abcdef\",\n    \"batteryCapacity\": 100\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{nodeBaseUrl}}/api/v1/drones",
+							"host": [
+								"{{nodeBaseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"drones"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 - Register Drone",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"model\": \"Heavyweight\",\n    \"weightLimit\": 500,\n    \"serialNumber\": \"abcdef\",\n    \"batteryCapacity\": 100\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{nodeBaseUrl}}/api/v1/drones",
+									"host": [
+										"{{nodeBaseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"drones"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE, OPTIONS"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Content-Type, Accept"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "246"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"f6-aydM+iNfFc41bAq57M/Fv69lmVw\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 29 May 2023 17:21:24 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"Request Successful\",\n    \"data\": {\n        \"state\": \"IDLE\",\n        \"id\": 1,\n        \"model\": \"Heavyweight\",\n        \"weightLimit\": 500,\n        \"serialNumber\": \"abcdef\",\n        \"batteryCapacity\": 100,\n        \"updatedAt\": \"2023-05-29T17:21:24.477Z\",\n        \"createdAt\": \"2023-05-29T17:21:24.477Z\"\n    }\n}"
+						},
+						{
+							"name": "400 - Invalid Weight Limit",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"model\": \"Heavyweight\",\n    \"weightLimit\": 600,\n    \"serialNumber\": \"abcdef\",\n    \"batteryCapacity\": 100\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{nodeBaseUrl}}/api/v1/drones",
+									"host": [
+										"{{nodeBaseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"drones"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE, OPTIONS"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Content-Type, Accept"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "358"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"166-NA+/5w6RQLTCRCT1WlpA6rQTIa8\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 29 May 2023 17:23:22 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"error\",\n    \"message\": \"Validation Failed\",\n    \"error\": {\n        \"name\": \"ValidationError\",\n        \"message\": \"Validation Failed\",\n        \"statusCode\": 400,\n        \"error\": \"Bad Request\",\n        \"details\": {\n            \"body\": [\n                {\n                    \"message\": \"\\\"weightLimit\\\" must be less than or equal to 500\",\n                    \"path\": [\n                        \"weightLimit\"\n                    ],\n                    \"type\": \"number.max\",\n                    \"context\": {\n                        \"limit\": 500,\n                        \"value\": 600,\n                        \"label\": \"weightLimit\",\n                        \"key\": \"weightLimit\"\n                    }\n                }\n            ]\n        }\n    }\n}"
+						},
+						{
+							"name": "400 - Invalid Model",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"model\": \"smallWeight\",\n    \"weightLimit\": 500,\n    \"serialNumber\": \"abcdef\",\n    \"batteryCapacity\": 100\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{nodeBaseUrl}}/api/v1/drones",
+									"host": [
+										"{{nodeBaseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"drones"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE, OPTIONS"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Content-Type, Accept"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "437"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1b5-ErZeQuNHDUchFJuhOsGBgK0siQo\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 29 May 2023 17:24:01 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"error\",\n    \"message\": \"Validation Failed\",\n    \"error\": {\n        \"name\": \"ValidationError\",\n        \"message\": \"Validation Failed\",\n        \"statusCode\": 400,\n        \"error\": \"Bad Request\",\n        \"details\": {\n            \"body\": [\n                {\n                    \"message\": \"\\\"model\\\" must be one of [Heavyweight, Cruiserweight, Middleweight, Lightweight]\",\n                    \"path\": [\n                        \"model\"\n                    ],\n                    \"type\": \"any.only\",\n                    \"context\": {\n                        \"valids\": [\n                            \"Heavyweight\",\n                            \"Cruiserweight\",\n                            \"Middleweight\",\n                            \"Lightweight\"\n                        ],\n                        \"label\": \"model\",\n                        \"value\": \"smallWeight\",\n                        \"key\": \"model\"\n                    }\n                }\n            ]\n        }\n    }\n}"
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "javaBaseUrl",
+			"value": "localhost:8080",
+			"type": "string"
+		},
+		{
+			"key": "nodeBaseUrl",
+			"value": "localhost:8000",
+			"type": "string"
+		}
+	]
+}
