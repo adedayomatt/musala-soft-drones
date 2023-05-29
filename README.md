@@ -156,3 +156,5 @@ The Node application uses [Mocha](https://mochajs.org) Javascript test framework
 ```
 docker exec node-drone-service npm test
 ```
+
+Also included is a postman collection that can be used to test all the api endpoints.
