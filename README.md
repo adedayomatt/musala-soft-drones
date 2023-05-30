@@ -73,7 +73,7 @@ While implementing your solution **please take care of the following requirement
 
 ---
 ---
-# Solution
+# Submission
 ---
 ---
 
@@ -87,7 +87,7 @@ This submission is primarily in NodeJS**
 ### Requirement
 - **Docker**: All applications are ran as docker containers, ensure docker engine is running on the system.
 
-#### Services
+### Services
 The following services are registered in the `docker-compose.yml`:
 - `mysql-service`: Database service using `mysql:8` image.
 - `java-drone-service`: Implementation in Java using the image `java-drone-image` built by the Dockerfile at  _`java/Dockerfile`_
