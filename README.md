@@ -158,3 +158,13 @@ docker exec node-drone-service npm test
 ```
 
 Also included is a postman collection that can be used to test all the api endpoints.
+
+### Connecting to the DB via a Client
+The following credentials can be used to access the MySql database via any client e.g. MySQL Workbench, Sequel Ace...
+```
+HOST: 127.0.0.1
+PORT: 3308
+USER: root
+PASSWORD: root
+```
+The `mysql-service` has to be up and running to be able to connect via a client.
